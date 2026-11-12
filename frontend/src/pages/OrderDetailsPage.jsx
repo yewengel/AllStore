@@ -145,7 +145,7 @@ const OrderDetailsPage = () => {
         <div className="orders-state-card orders-error-state" role="alert">
           <h1>Order details unavailable</h1>
           <p>{error || 'Order not found.'}</p>
-          <Link to="/orders" className="btn-primary">Back to My Orders</Link>
+          <Link to="/my-orders" className="btn-primary">Back to My Orders</Link>
         </div>
       </div>
     );
@@ -159,7 +159,7 @@ const OrderDetailsPage = () => {
       <div className="container">
         <div className="order-detail-page-header">
           <div>
-            <Link to="/orders" className="order-back-link">← Back to My Orders</Link>
+            <Link to="/my-orders" className="order-back-link">← Back to My Orders</Link>
             <h1 className="page-title">Order Details</h1>
             <p className="page-description">Review your purchase and delivery information.</p>
           </div>
@@ -209,7 +209,8 @@ const OrderDetailsPage = () => {
                 <div><dt>Phone number</dt><dd>{order.phoneNumber || '—'}</dd></div>
                 <div><dt>Street address</dt><dd>{address.address || order.deliveryAddress || '—'}</dd></div>
                 <div><dt>City</dt><dd>{address.city || '—'}</dd></div>
-                <div><dt>Region / country</dt><dd>{address.country || '—'}</dd></div>
+                <div><dt>Region</dt><dd>{address.region || '—'}</dd></div>
+                <div><dt>Country</dt><dd>{address.country || '—'}</dd></div>
                 <div><dt>Postal code</dt><dd>{address.postalCode || '—'}</dd></div>
               </dl>
             </section>
@@ -226,7 +227,7 @@ const OrderDetailsPage = () => {
 
             <section className="order-detail-panel order-detail-actions">
               <h2>Need help?</h2>
-              <Link to={`/orders/${order._id}/track`} className="btn-primary">Track Order</Link>
+              <Link to={`/orders/track/${order._id}`} className="btn-primary">Track Order</Link>
               <a className="btn-secondary" href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(`Help with order ${orderId}`)}`}>Contact Support</a>
               {canPayOnline && (
                 <button type="button" className="btn-primary" onClick={handlePayNow} disabled={isVerifyingPayment}>
@@ -264,7 +265,7 @@ const OrderDetailsPage = () => {
                   {canceling ? 'Cancelling…' : 'Cancel Order'}
                 </button>
               )}
-              <button type="button" className="order-back-button" onClick={() => navigate('/orders')}>Back to My Orders</button>
+              <button type="button" className="order-back-button" onClick={() => navigate('/my-orders')}>Back to My Orders</button>
             </section>
           </aside>
         </div>

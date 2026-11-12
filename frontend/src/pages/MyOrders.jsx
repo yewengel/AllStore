@@ -27,7 +27,7 @@ const orderDate = (value) => new Date(value).toLocaleString('en-US', {
   minute: '2-digit',
 });
 
-const OrdersPage = () => {
+const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
@@ -237,7 +237,7 @@ const OrdersPage = () => {
                       <strong>Total <b>{formatPrice(order.totalPrice, order.currency)}</b></strong>
                     </div>
                     <div className="customer-order-actions">
-                      <Link to={`/orders/${order._id}/track`} className="btn-secondary">Track Order</Link>
+                      <Link to={`/orders/track/${order._id}`} className="btn-secondary">Track Order</Link>
                       <Link to={`/orders/${order._id}`} className="btn-primary">View Order Details</Link>
                       <button type="button" className="orders-text-button" onClick={() => buyAgain(order)} disabled={workingOrderId === order._id}>
                         {workingOrderId === order._id ? 'Adding…' : 'Buy Again'}
@@ -262,4 +262,4 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+export default MyOrders;

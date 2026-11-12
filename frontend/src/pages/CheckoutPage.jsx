@@ -73,7 +73,7 @@ const CheckoutPage = () => {
 
       // Successfully created order & backend decreased stockQuantity!
       clearCart();
-      navigate('/orders', {
+      navigate('/my-orders', {
         state: { newOrderPlaced: true, orderNumber: data.orderNumber },
       });
     } catch (err) {

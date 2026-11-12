@@ -16,6 +16,10 @@ router.post('/', protect, createOrder);
 router.get('/my-orders', protect, getMyOrders);
 router.get('/myorders', protect, getMyOrders);
 
+// Tracking lookup for a single order (customer-scoped). Declared before '/:id'
+// so the more specific path always wins.
+router.get('/track/:id', protect, getOrderById);
+
 // Admin order listing
 router.get('/', protect, admin, getAllOrders);
 

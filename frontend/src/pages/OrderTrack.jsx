@@ -27,7 +27,7 @@ const formatDate = (value) => {
   });
 };
 
-const TrackOrderPage = () => {
+const OrderTrack = () => {
   const { id } = useParams();
   const { formatPrice } = useCurrency();
   const [orderResult, setOrderResult] = useState({ id: null, order: null, error: '' });
@@ -37,7 +37,7 @@ const TrackOrderPage = () => {
 
   useEffect(() => {
     let active = true;
-    api.get(`/orders/${id}`)
+    api.get(`/orders/track/${id}`)
       .then(({ data }) => {
         if (active) setOrderResult({ id, order: data, error: '' });
       })
@@ -80,7 +80,7 @@ const TrackOrderPage = () => {
         <div className="orders-state-card orders-error-state" role="alert">
           <h1>Tracking information unavailable</h1>
           <p>{error || 'Order not found.'}</p>
-          <Link to="/orders" className="btn-primary">Back to My Orders</Link>
+          <Link to="/my-orders" className="btn-primary">Back to My Orders</Link>
         </div>
       </div>
     );
@@ -91,7 +91,7 @@ const TrackOrderPage = () => {
       <div className="container">
         <div className="order-detail-page-header">
           <div>
-            <Link to="/orders" className="order-back-link">← Back to My Orders</Link>
+            <Link to="/my-orders" className="order-back-link">← Back to My Orders</Link>
             <h1 className="page-title">Track Your Order</h1>
             <p className="page-description">Delivery progress and updates for order {orderLabel}.</p>
           </div>
@@ -214,11 +214,11 @@ const TrackOrderPage = () => {
 
         <div className="tracking-page-actions">
           <Link to={`/orders/${order._id}`} className="btn-secondary">View Order Details</Link>
-          <Link to="/orders" className="btn-primary">Back to My Orders</Link>
+          <Link to="/my-orders" className="btn-primary">Back to My Orders</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default TrackOrderPage;
+export default OrderTrack;

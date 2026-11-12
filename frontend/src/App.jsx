@@ -14,9 +14,9 @@ import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
-import OrdersPage from './pages/OrdersPage';
+import MyOrders from './pages/MyOrders';
 import OrderDetailsPage from './pages/OrderDetailsPage';
-import TrackOrderPage from './pages/TrackOrderPage';
+import OrderTrack from './pages/OrderTrack';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
@@ -59,18 +59,18 @@ const AppLayout = () => {
             }
           />
           <Route
-            path="/orders"
+            path="/my-orders"
             element={
               <ProtectedRoute>
-                <OrdersPage />
+                <MyOrders />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/orders/:id/track"
+            path="/orders/track/:id"
             element={
               <ProtectedRoute>
-                <TrackOrderPage />
+                <OrderTrack />
               </ProtectedRoute>
             }
           />
@@ -82,7 +82,8 @@ const AppLayout = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="/track-order" element={<Navigate to="/orders" replace />} />
+          <Route path="/orders" element={<Navigate to="/my-orders" replace />} />
+          <Route path="/track-order" element={<Navigate to="/my-orders" replace />} />
           <Route path="/admin/orders" element={<AdminRoute><AdminDashboardPage /></AdminRoute>} />
 
           <Route path="/secure-admin-login" element={<AdminLoginPage />} />

@@ -98,11 +98,6 @@ const Navbar = () => {
                   </svg>
                 </button>
               </form>
-              {isCustomer && (
-                <Link to="/orders" className="store-search-orders-link">
-                  My Orders
-                </Link>
-              )}
             </div>
 
             <div className="store-nav-actions">
@@ -119,6 +114,16 @@ const Navbar = () => {
                   </svg>
                   <span>Account</span>
                 </Link>
+              )}
+              {isCustomer && (
+                <NavLink to="/my-orders" className="store-nav-action store-orders-action" aria-label="My Orders">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2h9l4 4v16H6z" />
+                    <path d="M15 2v4h4" />
+                    <path d="M9 12h7M9 16h7" />
+                  </svg>
+                  <span>My Orders</span>
+                </NavLink>
               )}
               <NavLink to="/cart" className="store-nav-action store-cart-action" aria-label={`Cart, ${totalItems} items`}>
                 <span className="store-cart-icon">
